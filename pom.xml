@@ -13,6 +13,8 @@
         <module>gateway-service</module>
         <!-- 系统模块 -->
         <module>system-parent</module>
+        <!-- 用户模块 -->
+        <module>user-parent</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -110,6 +112,13 @@
             <dependency>
                 <groupId>com.chenming.education</groupId>
                 <artifactId>system-client</artifactId>
+                <version>${education.version}</version>
+            </dependency>
+
+            <!-- user-client -->
+            <dependency>
+                <groupId>com.chenming.education</groupId>
+                <artifactId>user-client</artifactId>
                 <version>${education.version}</version>
             </dependency>
         </dependencies>
