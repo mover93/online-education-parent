@@ -11,6 +11,8 @@
     <modules>
         <!-- 网关服务 -->
         <module>gateway-service</module>
+        <!-- 系统模块 -->
+        <module>system-parent</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -25,17 +27,58 @@
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <lombok.version>1.18.12</lombok.version>
+        <druid.version>1.1.21</druid.version>
+        <hutool.version>5.4.2</hutool.version>
+        <mysql.version>5.1.47</mysql.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+        <education.version>1.0</education.version>
+        <fastjson.version>1.2.73</fastjson.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- hutool -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- durid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
             <!-- lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-                <scope>provided</scope>
             </dependency>
+
             <!-- springboot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -61,6 +104,13 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- system-client -->
+            <dependency>
+                <groupId>com.chenming.education</groupId>
+                <artifactId>system-client</artifactId>
+                <version>${education.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
