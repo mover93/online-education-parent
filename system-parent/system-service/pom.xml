@@ -20,8 +20,18 @@
         </dependency>
 
         <dependency>
+            <groupId>com.chenming.education</groupId>
+            <artifactId>user-client</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
     </dependencies>
 
