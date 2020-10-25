@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * version: 1.0 <br>
  */
 @RestController
-@RequestMapping(value = "/api/system")
+@RequestMapping(value = "/api/admin/system")
 public class SystemController {
 
     @DubboReference
