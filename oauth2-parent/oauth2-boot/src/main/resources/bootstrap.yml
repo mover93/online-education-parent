@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: oauth2-service
+
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 127.0.0.1:8848

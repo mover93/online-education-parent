@@ -11,5 +11,9 @@
 
     <artifactId>oauth2-parent</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>oauth2-service</module>
+        <module>oauth2-boot</module>
+    </modules>
 
 </project>

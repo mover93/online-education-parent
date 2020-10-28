@@ -1,0 +1,31 @@
+spring:
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+    timeout: 100ms
+  #dubbo配置
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+
+server:
+  port: 9030
+
+management:
+  endpoint:
+    health:
+      enabled: true

@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    gateway:
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 3s
+
+      routes:
+        - id: web_manager_route
+          uri: lb://web-manager:9081
+          predicates:
+            - Path=/api/admin/**
+        - id: oauth2_service_route
+          uri: lb://oauth2-service:9030
+          predicates:
+            - Path=/api/admin/login

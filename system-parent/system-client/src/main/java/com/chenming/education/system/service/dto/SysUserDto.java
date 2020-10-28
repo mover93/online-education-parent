@@ -1,31 +1,24 @@
-package com.chenming.education.system.entity;
+package com.chenming.education.system.service.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 后台用户信息
- * </p>
- *
- * @author chenming
- * @since 2020-09-12
+ * description: SysUserDto <br>
+ * author: chenming <br>
+ * date: 2020/10/28 21:30 <br>
+ * version: 1.0 <br>
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class SysUser implements Serializable {
+public class SysUserDto implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -4194405588981785039L;
 
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -72,6 +65,4 @@ public class SysUser implements Serializable {
      * 备注
      */
     private String remark;
-
-
 }
