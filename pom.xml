@@ -17,6 +17,8 @@
         <module>user-parent</module>
         <!-- web模块 -->
         <module>web-parent</module>
+        <!-- 统一认证模块 -->
+        <module>oauth2-parent</module>
     </modules>
 
     <packaging>pom</packaging>
