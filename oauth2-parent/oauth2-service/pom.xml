@@ -15,12 +15,23 @@
     <dependencies>
         <dependency>
             <groupId>com.chenming.education</groupId>
+            <artifactId>common-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.chenming.education</groupId>
             <artifactId>system-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
 
         <dependency>

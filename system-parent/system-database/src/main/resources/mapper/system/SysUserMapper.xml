@@ -2,4 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chenming.education.system.mapper.SysUserMapper">
 
+
+    <select id="listMenusByUserId" resultType="com.chenming.education.system.service.dto.SysMenuDto">
+        SELECT
+            T5.*
+        FROM
+            SYS_USER T1
+        LEFT JOIN SYS_ROLE_USER T2 ON T1.ID = T2.USER_ID
+        AND T2.STATUS_ID = '1'
+        LEFT JOIN SYS_ROLE T3 ON T2.ROLE_ID = T3.ID
+        AND T3.STATUS_ID = '1'
+        LEFT JOIN SYS_MENU_ROLE T4 ON T3.ID = T4.ROLE_ID
+        AND T4.STATUS_ID = '1'
+        LEFT JOIN SYS_MENU T5 ON T4.MENU_ID = T5.ID
+        AND T5.STATUS_ID = '1'
+        WHERE
+            T1.ID = #{id}
+    </select>
+
+    <select id="listRolesByUserId" resultType="com.chenming.education.system.service.dto.SysRoleDto">
+        SELECT
+            T3.*
+        FROM
+            SYS_USER T1
+        LEFT JOIN SYS_ROLE_USER T2 ON T1.ID = T2.USER_ID
+        AND T2.STATUS_ID = '1'
+        LEFT JOIN SYS_ROLE T3 ON T2.ROLE_ID = T3.ID
+        AND T3.STATUS_ID = '1'
+        WHERE
+            T1.ID = #{id}
+    </select>
+
 </mapper>

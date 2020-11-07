@@ -4,9 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chenming.education.system.entity.SysUser;
 import com.chenming.education.system.mapper.SysUserMapper;
+import com.chenming.education.system.service.dto.SysMenuDto;
+import com.chenming.education.system.service.dto.SysRoleDto;
 import com.chenming.education.system.service.dto.SysUserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -19,6 +24,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserManager extends ServiceImpl<SysUserMapper, SysUser> {
 
+    @Resource
+    private SysUserMapper sysUserMapper;
+
     public SysUserDto getSysUserByMobile(String mobile) {
         QueryWrapper<SysUser> qw = new QueryWrapper<>();
         qw.eq("mobile", mobile);
@@ -29,5 +37,13 @@ public class SysUserManager extends ServiceImpl<SysUserMapper, SysUser> {
             return sysUserDto;
         }
         return null;
+    }
+
+    public List<SysMenuDto> listMenusByUserId(Long id) {
+        return sysUserMapper.listMenusByUserId(id);
+    }
+
+    public List<SysRoleDto> listRolesByUserId(Long id) {
+        return sysUserMapper.listRolesByUserId(id);
     }
 }

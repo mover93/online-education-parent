@@ -1,8 +1,10 @@
 package com.chenming.education.oauth2.config;
 
 import com.chenming.education.system.service.SysUserService;
+import com.chenming.education.system.service.dto.SysRoleDto;
 import com.chenming.education.system.service.dto.SysUserDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,21 +36,25 @@ public class KiteUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("usernameis:" + username);
-        SysUserDto sysUserDto = sysUserService.getSysUserByMobile(username);
-        log.info("sysUserDto={}", sysUserDto);
 
-        // 查询数据库操作
-        if(!username.equals("admin")){
-            throw new UsernameNotFoundException("the user is not found");
-        }else{
-            // 用户角色也应在数据库中获取
-            String role = "ROLE_ADMIN";
-            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(role));
-            // 线上环境应该通过用户名查询数据库获取加密后的密码
-            String password = passwordEncoder.encode("123456");
-            return new User(username,password, authorities);
+        if (StringUtils.isEmpty(username)) {
+            throw new RuntimeException("username can not empty");
         }
+
+        // 1、根据username获取用户
+        SysUserDto sysUserDto = sysUserService.getSysUserByMobile(username);
+        if (sysUserDto == null) {
+            throw new UsernameNotFoundException("the user is not found");
+        }
+
+        // 2、获取用户的权限
+        List<SysRoleDto> roles = sysUserService.listRolesByUserId(sysUserDto.getId());
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (SysRoleDto role: roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getId().toString()));
+        }
+        // 3、加密密码
+        String password = passwordEncoder.encode(sysUserDto.getPassword());
+        return new User(username,password, authorities);
     }
 }

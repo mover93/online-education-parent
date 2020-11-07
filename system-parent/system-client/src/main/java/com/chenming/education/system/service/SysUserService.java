@@ -1,6 +1,10 @@
 package com.chenming.education.system.service;
 
+import com.chenming.education.system.service.dto.SysMenuDto;
+import com.chenming.education.system.service.dto.SysRoleDto;
 import com.chenming.education.system.service.dto.SysUserDto;
+
+import java.util.List;
 
 /**
  * description: SysUserService <br>
@@ -11,4 +15,8 @@ import com.chenming.education.system.service.dto.SysUserDto;
 public interface SysUserService {
 
     SysUserDto getSysUserByMobile(String mobile);
+
+    List<SysMenuDto> listMenusByUserId(Long id);
+
+    List<SysRoleDto> listRolesByUserId(Long id);
 }
